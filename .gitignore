@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# bundled local Miniforge environment inside the PCM project
+PCM battery/C*Usersmoham/
+
+# generated outputs
+PCM battery/output/
+PyBatterySim/outputs/
+
+# misc
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/

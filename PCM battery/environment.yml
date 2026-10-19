@@ -1,0 +1,38 @@
+name: fenics-pcm
+# ─────────────────────────────────────────────────────────────────────────────
+# Conda environment for the PCM battery-pack thermal simulation.
+#
+# FEniCSx (DOLFINx) does NOT run natively on Windows.
+# Use one of the following:
+#   A) WSL2  (recommended for Windows users) – install Ubuntu, then use this file
+#   B) Docker  → see README.md for a one-liner
+#   C) Linux or macOS directly
+#
+# Create this environment:
+#   conda env create -f environment.yml
+#   conda activate fenics-pcm
+#
+# Run the simulation:
+#   python main.py --dt 30 --t_end 3600
+# ─────────────────────────────────────────────────────────────────────────────
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.11
+  # ── FEniCSx stack (DOLFINx 0.8) ────────────────────────────────────────────
+  - fenics-dolfinx>=0.8,<0.9
+  - mpich                       # MPI backend (use openmpi on macOS if preferred)
+  - petsc>=3.20                 # parallel sparse linear algebra
+  - slepc                       # eigensolver (pulled in by petsc, good to have)
+  # ── gmsh (geometry + meshing) ───────────────────────────────────────────────
+  - gmsh>=4.12
+  - python-gmsh>=4.12           # Python bindings
+  # ── Scientific Python ───────────────────────────────────────────────────────
+  - numpy>=1.26
+  - scipy>=1.12
+  - matplotlib>=3.8
+  - mpi4py>=3.1
+  # ── Utilities ───────────────────────────────────────────────────────────────
+  - pip
